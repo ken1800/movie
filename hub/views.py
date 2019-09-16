@@ -10,7 +10,7 @@ class hubDetail(DetailView):
     model = hub
     template_name = "detail.html"
     paginate_by =1
-    #context_object_name = 'manze umeweza kwa details view'
+    context_object_name = 'detail'
     
 class hubList(ListView):
     model = hub
