@@ -34,11 +34,11 @@ class projectCategory(ListView):
     model= hub
     
     def get_queryset(self):
-        self.category= self.kwargs['category']
-        return hub.objects.filter(category= self.category)
+        self.categories= self.kwargs['categories']
+        return hub.objects.filter(categories= self.categories)
     
     def get_context_data(self,**kwargs):
         context = super(projectCategory,self).get_context_data(**kwargs)
-        context['pojectCategory'] = self.category
+        context['pojectCategory'] = self.categories
         return context
         

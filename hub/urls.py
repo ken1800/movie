@@ -6,5 +6,5 @@ urlpatterns = [
     #path('kenny',views.index, name='index'),
      path('', hubList.as_view(), name='hublist_view'),
      path('<int:pk>/', hubDetail.as_view(), name='hubdetails-detail'),
-     path('category/<str:category>',projectCategory.as_view(), name='projectCategory' ),    
+     path('category/<str:categories> :categories',projectCategory.as_view(), name='projectCategory' ),    
 ]
