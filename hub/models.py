@@ -12,9 +12,9 @@ class hub(models.Model):
     ('R', 'R'),
                 ]
     cate = [
-    ('WB', 'Web App'),
-    ('AD', 'Android'),
-    ('Dsk', 'Desktop App'),
+    ('web app', 'Web App'),
+    ('android', 'Android'),
+    ('desktop app', 'Desktop App'),
     
             ]
     state= [

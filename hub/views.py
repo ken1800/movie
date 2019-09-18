@@ -28,3 +28,17 @@ class hubList(ListView):
     context_object_name = 'list'
     template_name='list.html'
     paginate_by =2
+
+class projectCategory(ListView):
+    
+    model= hub
+    
+    def get_queryset(self):
+        self.category= self.kwargs['category']
+        return hub.objects.filter(category= self.category)
+    
+    def get_context_data(self,**kwargs):
+        context = super(projectCategory,self).get_context_data(**kwargs)
+        context['pojectCategory'] = self.category
+        return context
+        
