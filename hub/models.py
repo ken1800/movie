@@ -12,9 +12,9 @@ class hub(models.Model):
     ('R', 'R'),
                 ]
     cate = [
-    ('web app', 'Web App'),
-    ('android', 'Android'),
-    ('desktop app', 'Desktop App'),
+    ('W', 'Web App'),
+    ('A', 'Android'),
+    ('D', 'Desktop App'),
     
             ]
     state= [
@@ -24,12 +24,19 @@ class hub(models.Model):
     
             ]
     
+    
+    def language_default():
+        return {"language": "Python"}
+
+ #contact_info = JSONField("ContactInfo", default=contact_default)
+    
     title = models.CharField(max_length = 200)
     description = models.TextField(max_length = 600)
     image = models.ImageField(upload_to ='images')
-    categories = models.CharField(choices = cate ,max_length = 20)
+    category = models.CharField(choices = cate ,max_length = 20)
     status = models.CharField(choices= state,max_length = 200) 
     cast = models.CharField(max_length = 200)
+    language = models.CharField(choices= language,max_length = 200, default=language_default) 
     year_production=models.DateField()
     View_counts= models.IntegerField(default=0)
     

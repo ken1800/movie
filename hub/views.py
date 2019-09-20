@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from .models import hub,CodeLinks
+from hub.models import hub,CodeLinks
 
 # Create your views here.
 
@@ -28,17 +28,29 @@ class hubList(ListView):
     context_object_name = 'list'
     template_name='list.html'
     paginate_by =2
-
-class projectCategory(ListView):
-    
-    model= hub
-    
+class ProjectCategory(ListView):
+    model = hub
+    template_name='list.html'
+    paginate_by = 1
     def get_queryset(self):
-        self.categories= self.kwargs['categories']
-        return hub.objects.filter(categories= self.categories)
+        self.category= self.kwargs['category']
+        return hub.objects.filter(category= self.category)
     
     def get_context_data(self,**kwargs):
-        context = super(projectCategory,self).get_context_data(**kwargs)
-        context['pojectCategory'] = self.categories
-        return context
+         context = super(ProjectCategory,self).get_context_data(**kwargs)
+         context['catego'] = self.category
+         return context
+     
+class ProjectLanguage(ListView):
+    model = hub
+    template_name='list.html'
+    
+    def get_queryset(self):
+        self.language= self.kwargs['lang']
+        return hub.objects.filter(language= self.language)
+    
+    def get_context_data(self,**kwargs):
+         context = super(ProjectLanguage,self).get_context_data(**kwargs)
+         context['language'] = self.language
+         return context
         
